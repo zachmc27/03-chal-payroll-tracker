@@ -1,10 +1,30 @@
 // Get a reference to the #add-employees-btn element
 const addEmployeesBtn = document.querySelector('#add-employees-btn');
-
 // Collect employee data
+
+const employeesArray = [];
+
 const collectEmployees = function () {
   // TODO: Get user input to create and return an array of employee objects
+    let firstName = prompt(`Enter first name`);
+    let lastName = prompt('Enter last name');
+    let salary = prompt('Enter salary');
+
+    let employeeData = {
+      firstName: firstName,
+      lastName: lastName,
+      salary: salary
+    };
+    
+    console.log(employeeData)
+  
+  //when click on button, queue a series of alerts asking for: first, last, salary.
+  //store each group of inputs into their own object (emp1, emp2, emp3)
+  //grab the objects and push into array called employeesArray
+  //alert option "do you want to add another employee?" if yes repeat the steps. if no stop there.
 };
+
+addEmployeesBtn.addEventListener('click', collectEmployees())
 
 // Display the average salary
 const displayAverageSalary = function (employeesArray) {
