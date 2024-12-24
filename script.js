@@ -28,14 +28,13 @@ const collectEmployees = function () {
   //store each group of inputs into their own object (emp1, emp2, emp3)
   //grab the objects and push into array called employeesArray
   //alert option "do you want to add another employee?" if yes repeat the steps. if no stop there.
-  console.log(employeesArray)
 };
-
+employeesArray
 // Display the average salary
 const displayAverageSalary = function (employeesArray) {
   // TODO: Calculate and display the average salary
   let allSalaries = [];
-  for (let i = 0; i < employeesArray.length; i++) {
+  for (let i = 0; i < 3; i++) {
     let employee = employeesArray[i];
     allSalaries.push(employee.salary);
   }
@@ -52,8 +51,15 @@ const displayAverageSalary = function (employeesArray) {
 // Select a random employee
 const getRandomEmployee = function (employeesArray) {
   // TODO: Select and display a random employee
-};
+  const randomEmployee = employeesArray[Math.floor(Math.random() * employeesArray.length)]
+  return randomEmployee
+  /*
+   Use employeesArray[math.floor(Math.random() * employeesArray.length)]
+  to get a random place in the index thus selecting random employee.
+   return that employee
+   */
 
+};
 /*
   ====================
   STARTER CODE
