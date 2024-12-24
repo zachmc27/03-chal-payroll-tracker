@@ -1,11 +1,14 @@
 // Get a reference to the #add-employees-btn element
 const addEmployeesBtn = document.querySelector('#add-employees-btn');
-// Collect employee data
 
+// Collect employee data
 const employeesArray = [];
 
 const collectEmployees = function () {
   // TODO: Get user input to create and return an array of employee objects
+    let addMore = true;
+
+    while (addMore) {
     let firstName = prompt(`Enter first name`);
     let lastName = prompt('Enter last name');
     let salary = prompt('Enter salary');
@@ -13,22 +16,37 @@ const collectEmployees = function () {
     let employeeData = {
       firstName: firstName,
       lastName: lastName,
-      salary: salary
+      salary: parseFloat(salary)
     };
     
-    console.log(employeeData)
+    employeesArray.push(employeeData)
+
+    addMore = confirm("Do you want to add another employee?");
   
+  }
   //when click on button, queue a series of alerts asking for: first, last, salary.
   //store each group of inputs into their own object (emp1, emp2, emp3)
   //grab the objects and push into array called employeesArray
   //alert option "do you want to add another employee?" if yes repeat the steps. if no stop there.
+  console.log(employeesArray)
 };
-
-addEmployeesBtn.addEventListener('click', collectEmployees())
 
 // Display the average salary
 const displayAverageSalary = function (employeesArray) {
   // TODO: Calculate and display the average salary
+  let allSalaries = [];
+  for (let i = 0; i < employeesArray.length; i++) {
+    let employee = employeesArray[i];
+    allSalaries.push(employee.salary);
+  }
+  const sum = allSalaries.reduce((total, num) => total + num, 0);
+  const average = sum / allSalaries.length;
+  return average
+  /*
+  First, loop thru array and grab salary data of each, store in new array
+  add all numbers in array together, then divide by the length of array
+  return the result for the average
+  */
 };
 
 // Select a random employee
