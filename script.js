@@ -13,6 +13,10 @@ const collectEmployees = function () {
     let lastName = prompt('Enter last name');
     let salary = prompt('Enter salary');
 
+    if(isNaN(salary)) {
+      salary = 0
+    };
+
     let employeeData = {
       firstName: firstName,
       lastName: lastName,
@@ -20,27 +24,30 @@ const collectEmployees = function () {
     };
     
     employeesArray.push(employeeData)
-
+    
     addMore = confirm("Do you want to add another employee?");
-  
+    if (addMore === false) {
+      return employeesArray
+    }
   }
   //when click on button, queue a series of alerts asking for: first, last, salary.
   //store each group of inputs into their own object (emp1, emp2, emp3)
   //grab the objects and push into array called employeesArray
   //alert option "do you want to add another employee?" if yes repeat the steps. if no stop there.
 };
-employeesArray
+
 // Display the average salary
 const displayAverageSalary = function (employeesArray) {
+  
   // TODO: Calculate and display the average salary
   let allSalaries = [];
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < employeesArray.length; i++) {
     let employee = employeesArray[i];
     allSalaries.push(employee.salary);
   }
   const sum = allSalaries.reduce((total, num) => total + num, 0);
   const average = sum / allSalaries.length;
-  return average
+  console.log(`The average employee salary between our ${employeesArray.length} employee(s) is $${average.toFixed(2)}`)
   /*
   First, loop thru array and grab salary data of each, store in new array
   add all numbers in array together, then divide by the length of array
@@ -52,7 +59,8 @@ const displayAverageSalary = function (employeesArray) {
 const getRandomEmployee = function (employeesArray) {
   // TODO: Select and display a random employee
   const randomEmployee = employeesArray[Math.floor(Math.random() * employeesArray.length)]
-  return randomEmployee
+
+  console.log(`Congratulations to ${randomEmployee.firstName} ${randomEmployee.lastName}, our random drawing winner!`)
   /*
    Use employeesArray[math.floor(Math.random() * employeesArray.length)]
   to get a random place in the index thus selecting random employee.
